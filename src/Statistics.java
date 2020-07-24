@@ -24,15 +24,15 @@ public class Statistics {
                 }
             }
             numbers = new int[countOfNumbers];
-            while (true) {
-                try {
-                    for (int i = 0; i < countOfNumbers; i++) {
+            for (int i = 0; i < countOfNumbers; i++) {
+                while (true) {
+                    try {
                         System.out.printf("Zadej %d. hodnotu:  ", i + 1);
                         numbers[i] = Integer.parseInt(scanner.next());
+                        break;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Chybný vstup");
                     }
-                    break;
-                } catch (NumberFormatException e) {
-                    System.out.println("Chybný vstup");
                 }
             }
             while (operationChecker) {
