@@ -2,8 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Calculator {
-    //int a;
-    //int b;
+    
 
     public static void main(String[] args) {
         boolean checker = true;
