@@ -79,7 +79,6 @@ public class CalculatorOOP {
 
         if (goOn.toUpperCase().equals("NE")) {
             checker = false;
-            //break;
         }
     }
 
