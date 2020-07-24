@@ -10,7 +10,7 @@ public class StatisticsOOP {
     static boolean operationChecker = true;
     static boolean checker = true;
 
-    void getCount() {
+    void setCount() {
         while (true) {
             try {
                 System.out.println("Zadej počet vkládaných hodnot: ");
@@ -22,7 +22,7 @@ public class StatisticsOOP {
         }
     }
 
-    void getArray() {
+    void setArray() {
         numbers = new int[countOfNumbers];
         for (int i = 0; i < countOfNumbers; i++) {
             while (true) {
@@ -37,7 +37,7 @@ public class StatisticsOOP {
         }
     }
 
-    void getOperation() {
+    void setOperation() {
         while (true) {
             try {
                 System.out.println("Zadej operaci: MIN, MAX, AVG ");
@@ -115,21 +115,19 @@ public class StatisticsOOP {
         while (checker) {
 
 //          get input data
-            statistics.getCount();
-            statistics.getArray();
+            statistics.setCount();
+            statistics.setArray();
 
 
             while (operationChecker) {
 //          get operation
-                statistics.getOperation();
-
+                statistics.setOperation();
 
 //          perform operation and print result
                 statistics.countAndPrint();
 
 //          decide if continue with different operation
                 statistics.decideIfNextOperation();
-
             }
 
 //          decide if continue  with different data
