@@ -8,37 +8,38 @@ public class CalculatorOOP {
     static boolean checker = true;
     Scanner scanner = new Scanner(System.in);
 
-    void setA() {
+    void setA(int a) {
+        this.a = a;
+    }
+
+    void setB(int b){
+        this.b = b;
+    }
+
+    int scan(String var) {
         while (true) {
             try {
-                System.out.println("Zadej číslo a: ");
-                a = Integer.parseInt(scanner.next());
-                break;
+                System.out.printf("Zadej číslo %s: ", var);
+                return Integer.parseInt(scanner.next());
+                //break;
             } catch (NumberFormatException e) {
                 System.out.println("Chybný vstup");
             }
         }
+
     }
 
-    void setB() {
-        while (true) {
-            try {
-                System.out.println("Zadej číslo b: ");
-                b = Integer.parseInt(scanner.next());
-                break;
-            } catch (NumberFormatException e) {
-                System.out.println("Chybný vstup");
-            }
-        }
+    void setOperator(String operator) {
+        this.operator = operator;
     }
 
-    void setOperator() {
+    String scanOperator() {
         while (true) {
             try {
                 System.out.println("Zadej operátor: ");
                 operator = scanner.next();
                 if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
-                    break;
+                    return operator;
                 } else {
                     System.out.println("Operátor musí být: +, -, * nebo /.");
                 }
@@ -94,9 +95,9 @@ public class CalculatorOOP {
         while (checker) {
 
 //          get variables
-            calculator.setA();
-            calculator.setB();
-            calculator.setOperator();
+            calculator.setA(calculator.scan("a"));
+            calculator.setB(calculator.scan("b"));
+            calculator.setOperator(calculator.scanOperator());
 
 //          perform operation and print result
             calculator.countAndPrint();
