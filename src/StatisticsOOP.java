@@ -15,7 +15,12 @@ public class StatisticsOOP {
             try {
                 System.out.println("Zadej počet vkládaných hodnot: ");
                 countOfNumbers = Integer.parseInt(scanner.next());
-                break;
+                if (countOfNumbers > 0) {
+                    break;
+                } else {
+                    System.out.println("Počet hodnot musí být větší než 0!");
+                }
+                //break;
             } catch (NumberFormatException e) {
                 System.out.println("Chybný vstup");
             }
@@ -39,7 +44,14 @@ public class StatisticsOOP {
 
     void setOperation() {
         while (true) {
-            try {
+            System.out.println("Zadej operaci: MIN, MAX, AVG ");
+            operation = scanner.next();
+            if (operation.equals("MIN") || operation.equals("MAX") || operation.equals("AVG")) {
+                break;
+            } else {
+                System.out.println("Zadej správnou operaci: MIN, MAX nebo AVG.");
+            }
+            /*try {
                 System.out.println("Zadej operaci: MIN, MAX, AVG ");
                 operation = scanner.next();
                 if (operation.equals("MIN") || operation.equals("MAX") || operation.equals("AVG")) {
@@ -49,7 +61,7 @@ public class StatisticsOOP {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Chybný vstup.");
-            }
+            }*/
         }
     }
 
