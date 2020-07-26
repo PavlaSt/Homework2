@@ -10,8 +10,9 @@ public class StatisticsOOP {
     static boolean operationChecker = true;
     static boolean checker = true;
 
-    void setCount() {
-        while (true) {
+    void setCount(int countOfNumbers) {
+        this.countOfNumbers = countOfNumbers;
+        /*while (true) {
             try {
                 System.out.println("Zadej počet vkládaných hodnot: ");
                 countOfNumbers = Integer.parseInt(scanner.next());
@@ -24,10 +25,43 @@ public class StatisticsOOP {
             } catch (NumberFormatException e) {
                 System.out.println("Chybný vstup");
             }
+        }*/
+    }
+
+    int scanCount() {
+        while (true) {
+            try {
+                System.out.println("Zadej počet vkládaných hodnot: ");
+                countOfNumbers = Integer.parseInt(scanner.next());
+                if (countOfNumbers > 0) {
+                    return countOfNumbers;
+                } else {
+                    System.out.println("Počet hodnot musí být větší než 0!");
+                }
+                //break;
+            } catch (NumberFormatException e) {
+                System.out.println("Chybný vstup");
+            }
         }
     }
 
-    void setArray() {
+    void setArray(int[] numbers) {
+        this.numbers = numbers;
+        /*numbers = new int[countOfNumbers];
+        for (int i = 0; i < countOfNumbers; i++) {
+            while (true) {
+                try {
+                    System.out.printf("Zadej %d. hodnotu:  ", i + 1);
+                    numbers[i] = Integer.parseInt(scanner.next());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Chybný vstup");
+                }
+            }
+        }*/
+    }
+
+    int[] scanArray() {
         numbers = new int[countOfNumbers];
         for (int i = 0; i < countOfNumbers; i++) {
             while (true) {
@@ -40,17 +74,19 @@ public class StatisticsOOP {
                 }
             }
         }
+        return numbers;
     }
 
-    void setOperation() {
-        while (true) {
-            System.out.println("Zadej operaci: MIN, MAX, AVG ");
+    void setOperation(String operation) {
+        this.operation = operation;
+        //while (true) {
+            /*System.out.println("Zadej operaci: MIN, MAX, AVG ");
             operation = scanner.next();
             if (operation.equals("MIN") || operation.equals("MAX") || operation.equals("AVG")) {
                 break;
             } else {
                 System.out.println("Zadej správnou operaci: MIN, MAX nebo AVG.");
-            }
+            }*/
             /*try {
                 System.out.println("Zadej operaci: MIN, MAX, AVG ");
                 operation = scanner.next();
@@ -62,6 +98,19 @@ public class StatisticsOOP {
             } catch (InputMismatchException e) {
                 System.out.println("Chybný vstup.");
             }*/
+        //}
+    }
+
+    String scanOperation() {
+        while (true) {
+            System.out.println("Zadej operaci: MIN, MAX, AVG ");
+            operation = scanner.next();
+            if (operation.equals("MIN") || operation.equals("MAX") || operation.equals("AVG")) {
+                return operation;
+                //break;
+            } else {
+                System.out.println("Zadej správnou operaci: MIN, MAX nebo AVG.");
+            }
         }
     }
 
@@ -112,6 +161,8 @@ public class StatisticsOOP {
 
         if (goOn.toUpperCase().equals("NE")) {
             checker = false;
+        } else {
+            operationChecker = true;
         }
     }
 
@@ -127,13 +178,13 @@ public class StatisticsOOP {
         while (checker) {
 
 //          get input data
-            statistics.setCount();
-            statistics.setArray();
+            statistics.setCount(statistics.scanCount());
+            statistics.setArray(statistics.scanArray());
 
 
             while (operationChecker) {
 //          get operation
-                statistics.setOperation();
+                statistics.setOperation(statistics.scanOperation());
 
 //          perform operation and print result
                 statistics.countAndPrint();

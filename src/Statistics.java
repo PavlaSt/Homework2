@@ -108,6 +108,8 @@ public class Statistics {
 
             if (goOn.toUpperCase().equals("NE")) {
                 break;
+            } else {
+                operationChecker = true;
             }
         }
     }
