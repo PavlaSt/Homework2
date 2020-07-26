@@ -62,7 +62,7 @@ public class CalculatorOOP {
                 break;
             case "/":
                 try {
-                    System.out.printf("%.2f", a / (double) b);
+                    System.out.printf("%.2f ",  (double) a / b);
                     break;
                 } catch (ArithmeticException e) {
                     System.out.println("Nulou dělit nelze! Je nutno zadat jinou hodnotu b nebo jiný operátor.");
