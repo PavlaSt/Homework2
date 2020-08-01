@@ -1,0 +1,7 @@
+.idea
+*.class
+out
+Thumbs.db
+.DS_Store
+*.iml
+*.ipr

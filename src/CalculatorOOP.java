@@ -2,25 +2,25 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CalculatorOOP {
-    int a;
-    int b;
+    double a;
+    double b;
     String operator;
     static boolean checker = true;
     Scanner scanner = new Scanner(System.in);
 
-    void setA(int a) {
+    void setA(double a) {
         this.a = a;
     }
 
-    void setB(int b){
+    void setB(double b){
         this.b = b;
     }
 
-    int scan(String var) {
+    double scan(String var) {
         while (true) {
             try {
                 System.out.printf("Zadej číslo %s: ", var);
-                return Integer.parseInt(scanner.next());
+                return Double.parseDouble(scanner.next());
                 //break;
             } catch (NumberFormatException e) {
                 System.out.println("Chybný vstup");
@@ -49,21 +49,17 @@ public class CalculatorOOP {
         }
     }
 
-    void countAndPrint() {
+    double count() {
         switch (operator) {
             case "+":
-                System.out.println(a + b);
-                break;
+                return a + b;
             case "-":
-                System.out.println(a - b);
-                break;
+                return a - b;
             case "*":
-                System.out.println(a * b);
-                break;
+                return a * b;
             case "/":
                 try {
-                    System.out.printf("%.2f ",  (double) a / b);
-                    break;
+                    return a / b;
                 } catch (ArithmeticException e) {
                     System.out.println("Nulou dělit nelze! Je nutno zadat jinou hodnotu b nebo jiný operátor.");
                     break;
@@ -72,6 +68,11 @@ public class CalculatorOOP {
                 System.out.println("Chybný vstup");
                 break;
         }
+        return 0;
+    }
+
+    void printResult(double result) {
+        System.out.printf("Výsledek: %.2f.  ", result);
     }
 
     void decideIfContinue() {
@@ -100,7 +101,8 @@ public class CalculatorOOP {
             calculator.setOperator(calculator.scanOperator());
 
 //          perform operation and print result
-            calculator.countAndPrint();
+            calculator.printResult(calculator.count());
+
 
 //          decide if continue
             calculator.decideIfContinue();

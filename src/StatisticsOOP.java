@@ -5,27 +5,13 @@ public class StatisticsOOP {
 
     Scanner scanner = new Scanner(System.in);
     int countOfNumbers;
-    int[] numbers;
+    double[] numbers;
     String operation;
     static boolean operationChecker = true;
     static boolean checker = true;
 
     void setCount(int countOfNumbers) {
         this.countOfNumbers = countOfNumbers;
-        /*while (true) {
-            try {
-                System.out.println("Zadej počet vkládaných hodnot: ");
-                countOfNumbers = Integer.parseInt(scanner.next());
-                if (countOfNumbers > 0) {
-                    break;
-                } else {
-                    System.out.println("Počet hodnot musí být větší než 0!");
-                }
-                //break;
-            } catch (NumberFormatException e) {
-                System.out.println("Chybný vstup");
-            }
-        }*/
     }
 
     int scanCount() {
@@ -45,29 +31,17 @@ public class StatisticsOOP {
         }
     }
 
-    void setArray(int[] numbers) {
+    void setArray(double[] numbers) {
         this.numbers = numbers;
-        /*numbers = new int[countOfNumbers];
-        for (int i = 0; i < countOfNumbers; i++) {
-            while (true) {
-                try {
-                    System.out.printf("Zadej %d. hodnotu:  ", i + 1);
-                    numbers[i] = Integer.parseInt(scanner.next());
-                    break;
-                } catch (NumberFormatException e) {
-                    System.out.println("Chybný vstup");
-                }
-            }
-        }*/
     }
 
-    int[] scanArray() {
-        numbers = new int[countOfNumbers];
+    double[] scanArray() {
+        numbers = new double[countOfNumbers];
         for (int i = 0; i < countOfNumbers; i++) {
             while (true) {
                 try {
                     System.out.printf("Zadej %d. hodnotu:  ", i + 1);
-                    numbers[i] = Integer.parseInt(scanner.next());
+                    numbers[i] = Double.parseDouble(scanner.next());
                     break;
                 } catch (NumberFormatException e) {
                     System.out.println("Chybný vstup");
@@ -79,26 +53,6 @@ public class StatisticsOOP {
 
     void setOperation(String operation) {
         this.operation = operation;
-        //while (true) {
-            /*System.out.println("Zadej operaci: MIN, MAX, AVG ");
-            operation = scanner.next();
-            if (operation.equals("MIN") || operation.equals("MAX") || operation.equals("AVG")) {
-                break;
-            } else {
-                System.out.println("Zadej správnou operaci: MIN, MAX nebo AVG.");
-            }*/
-            /*try {
-                System.out.println("Zadej operaci: MIN, MAX, AVG ");
-                operation = scanner.next();
-                if (operation.equals("MIN") || operation.equals("MAX") || operation.equals("AVG")) {
-                    break;
-                } else {
-                    System.out.println("Zadej správnou operaci: MIN, MAX nebo AVG.");
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Chybný vstup.");
-            }*/
-        //}
     }
 
     String scanOperation() {
@@ -114,37 +68,38 @@ public class StatisticsOOP {
         }
     }
 
-    void countAndPrint() {
+    double count() {
         switch (operation) {
             case "MIN":
-                int min = Integer.MAX_VALUE;
+                double min = Double.MAX_VALUE;
                 for (int i = 0; i < countOfNumbers; i++) {
                     if (numbers[i] < min) {
                         min = numbers[i];
                     }
                 }
-                System.out.printf("Minimum je %d.", min);
-                break;
+                return min;
             case "MAX":
-                int max = Integer.MIN_VALUE;
+                double max = Double.MIN_VALUE;
                 for (int i = 0; i < countOfNumbers; i++) {
                     if (numbers[i] > max) {
                         max = numbers[i];
                     }
                 }
-                System.out.printf("Maximum je %d.", max);
-                break;
+                return max;
             case "AVG":
-                int sum = 0;
+                double sum = 0;
                 for (int i = 0; i < countOfNumbers; i++) {
                     sum += numbers[i];
                 }
-                System.out.printf("Průměr je %.2f.", sum / (double) countOfNumbers);
-                break;
+                return sum / countOfNumbers;
             default:
                 System.out.println("Chybný vstup");
                 break;
         }
+        return 0;
+    }
+    void printResult(double result) {
+        System.out.printf("Výsledek je %.2f. ", result);
     }
 
     void decideIfNextOperation() {
@@ -187,7 +142,7 @@ public class StatisticsOOP {
                 statistics.setOperation(statistics.scanOperation());
 
 //          perform operation and print result
-                statistics.countAndPrint();
+                statistics.printResult(statistics.count());
 
 //          decide if continue with different operation
                 statistics.decideIfNextOperation();
