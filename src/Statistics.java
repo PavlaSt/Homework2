@@ -50,17 +50,6 @@ public class Statistics {
                     } else {
                         System.out.println("Zadej správnou operaci: MIN, MAX nebo AVG.");
                     }
-                    /*try {
-                        System.out.println("Zadej operaci: MIN, MAX, AVG ");
-                        operation = scanner.next();
-                        if (operation.equals("MIN") || operation.equals("MAX") || operation.equals("AVG")) {
-                            break;
-                        } else {
-                            System.out.println("Zadej správnou operaci: MIN, MAX nebo AVG.");
-                        }
-                    } catch (InputMismatchException e) {
-                        System.out.println("Chybný vstup.");
-                    }*/
                 }
 
 //          perform operation and print result
